@@ -1,0 +1,1 @@
+var catalogViewToogle = document.querySelectorAll("");
