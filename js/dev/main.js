@@ -22,20 +22,6 @@ for(var i = 0; i < btnsToCard.length; i++) {
   btnsToCard[i].addEventListener('click', addToCard);
 }
 
-function addToCard(e) {
-  e.preventDefault();
-  var item = this.closest('.catalog_cart');
-  var title = item.querySelector('.catalog_cart__title').textContent;
-  var price = Number(item.dataset.price);
-  var itemObj = {
-    title: title,
-    price: price,
-  };
-  arrayCart.push(itemObj);
-  calculatePrice();
-  renderCart();
-}
-
 function removeFromCard() {
   list.innerHTML = "";
 }

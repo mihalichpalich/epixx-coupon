@@ -486,7 +486,7 @@ a {
   overflow: hidden; }
   .checkbox__input {
     display: none; }
-  .checkbox__input:checked .checkbox__box::before {
+  .checkbox__input:checked + .checkbox__box::before {
     background-color: #f04a22; }
   .checkbox__box {
     float: left;
