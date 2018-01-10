@@ -23,7 +23,16 @@ for(var i = 0; i < btnsToCard.length; i++) {
 }
 
 function removeFromCard() {
-  list.innerHTML = "";
+  var catalogBasketLine = (this.parentNode).parentNode;
+  var catalogBasketLinePrice = Number(catalogBasketLine.querySelector('.price').innerHTML).toFixed(1);
+  var summarizedPrice = Number(finalPrice.innerHTML).toFixed(1);
+
+  catalogBasketLine.remove();
+  arrayCart.pop();
+
+  var decreasePrice = summarizedPrice - catalogBasketLinePrice;
+  finalPrice.innerHTML = decreasePrice.toFixed(1);
+  //console.log(decreasePrice);
 }
 
 function cleanCart() {
@@ -50,5 +59,5 @@ function calculatePrice() {
   arrayCart.forEach(function(item, i) {
     price += item.price;
   });
-  finalPrice.textContent = price;
+  finalPrice.textContent = price.toFixed(1);
 }

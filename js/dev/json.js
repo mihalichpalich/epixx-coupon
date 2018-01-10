@@ -161,13 +161,17 @@ function renderDate(objectDate, div) {
 function addToCard(e) {
   e.preventDefault();
   var item = this.closest('.catalog_cart');
-  var title = item.querySelector('.catalog_cart__title').textContent;
-  var price = Number(item.dataset.price);
-  var itemObj = {
-    title: title,
-    price: price,
-  };
-  arrayCart.push(itemObj);
+
+  if (!item.classList.contains('catalog_cart--disabled')) {
+    var title = item.querySelector('.catalog_cart__title').textContent;
+    var price = Number(item.dataset.price);
+    var itemObj = {
+      title: title,
+      price: price,
+    };
+    arrayCart.push(itemObj);
+  }
+  //console.log(arrayCart);
   calculatePrice();
   renderCart();
 }
