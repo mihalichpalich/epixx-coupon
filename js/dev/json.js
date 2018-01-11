@@ -87,35 +87,6 @@ function createOneItem(item) {
   catalogList.appendChild(newItem);
 }
 
-// var btnSortPrice = document.querySelector('.catalog_sort__item:first-child');
-// var btnSortDiscount = document.querySelector('.catalog_sort__item:last-child');
-// btnSortPrice.addEventListener('click', sortPrice);
-// btnSortDiscount.addEventListener('click', sortDiscount);
-
-// function sortPrice(e) {
-//   e.preventDefault();
-//   cartsDataArray.sort(function(a, b) {
-//     if (a.priceNew > b.priceNew) {
-//       return 1;
-//     } else {
-//       return -1;
-//     }
-//   });
-//   createItems(cartsDataArray);
-// }
-
-// function sortDiscount(e) {
-//   e.preventDefault();
-//   cartsDataArray.sort(function(a, b) {
-//     if (a.priceNew < b.priceNew) {
-//       return 1;
-//     } else {
-//       return -1;
-//     }
-//   });
-//   createItems(cartsDataArray);
-// }
-
 // таймер
 var now = new Date();
 const SECONDS_IN_MINUTES = 60;

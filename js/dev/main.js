@@ -9,6 +9,14 @@ for (var i=0; i<catalogViewToogle.length; i++) {
       document.querySelector(".catalog_view__item--active").classList.remove('catalog_view__item--active');
       elem.classList.add('catalog_view__item--active');
     }
+
+    if (catalogViewToogle[0].classList.contains('catalog_view__item--active')) {
+      catalogList.classList.remove('catalog__list--three');
+      catalogList.classList.add('catalog__list--two');
+    } else {
+      catalogList.classList.remove('catalog__list--two');
+      catalogList.classList.add('catalog__list--three');
+    }
   });
 }
 
