@@ -102,3 +102,56 @@ function filterCatalog() {
 function filterByType(currentType) {
   return filters.type.indexOf(currentType) == -1;
 }
+
+var btnSortPrice = document.querySelector('.catalog_sort__item:first-child');
+var btnSortDiscount = document.querySelector('.catalog_sort__item:last-child');
+btnSortPrice.addEventListener('click', sortPrice);
+btnSortDiscount.addEventListener('click', sortDiscount);
+
+function sortPrice(e) {
+  e.preventDefault();
+
+  var catalogItemsPrice = document.querySelectorAll('[data-price]');
+  var catalogItemsPriceArray = [];
+
+  for (var i=0; i<catalogItemsPrice.length; i++) {
+    catalogItemsPriceArray.push(catalogItemsPrice[i]);
+  }
+
+  catalogItemsPriceArray.sort(function(a, b) {
+    if (Number(a.getAttribute("data-price")) > Number(b.getAttribute("data-price"))) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  for (var i=0; i<catalogItemsPriceArray.length; i++) {
+    catalogList.appendChild(catalogItemsPriceArray[i]);
+    //console.log(catalogItemsPriceArray[i].getAttribute("data-price"));
+  }
+}
+
+function sortDiscount(e) {
+  e.preventDefault();
+
+  var catalogItemsPrice = document.querySelectorAll('[data-price]');
+  var catalogItemsPriceArray = [];
+
+  for (var i=0; i<catalogItemsPrice.length; i++) {
+    catalogItemsPriceArray.push(catalogItemsPrice[i]);
+  }
+
+  catalogItemsPriceArray.sort(function(a, b) {
+    if (Number(a.getAttribute("data-price")) < Number(b.getAttribute("data-price"))) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  for (var i=0; i<catalogItemsPriceArray.length; i++) {
+    catalogList.appendChild(catalogItemsPriceArray[i]);
+    //console.log(catalogItemsPriceArray[i].getAttribute("data-price"));
+  }
+}
