@@ -26,7 +26,7 @@ var btnsToCard = document.querySelectorAll('.catalog_cart__btn  .btn');
 var list = document.querySelector('.catalog_basket__list');
 var finalPrice = document.querySelector('.catalog_basket__summ_text');
 
-for(var i = 0; i < btnsToCard.length; i++) {
+for(i = 0; i < btnsToCard.length; i++) {
   btnsToCard[i].addEventListener('click', addToCard);
 }
 

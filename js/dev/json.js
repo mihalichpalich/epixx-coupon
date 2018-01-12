@@ -53,9 +53,8 @@ function createOneItem(item) {
   }
 
   var dateToYear = dateTo.getFullYear();
-  dateToYear = dateToYear%100;
 
-  var dateToFull = dateToDay+'.'+dateToMonth+'.'+dateToYear;
+  var dateToFull = dateToYear + ', ' + dateToMonth + ', ' + dateToDay;
 
   newItem.setAttribute('data-date-to', dateToFull);
   newItem.setAttribute('data-date-from', item.dateFrom);
