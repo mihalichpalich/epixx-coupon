@@ -69,3 +69,28 @@ function calculatePrice() {
   });
   finalPrice.textContent = price.toFixed(1);
 }
+
+//modal window
+var buyButton = document.querySelector('.catalog_basket__summ .btn');
+var modalUnderlay = document.querySelector('.modal_underlay');
+var modalWindow = document.querySelector('.modal_order');
+var modalClose = document.querySelector('.modal__close');
+
+buyButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  if (finalPrice.innerHTML != "0") {
+    modalUnderlay.style.display = "block";
+    modalWindow.style.display = "block";
+  }
+});
+
+modalUnderlay.addEventListener('click', function() {
+  this.style.display = "none";
+  modalWindow.style.display = "none";
+});
+
+modalClose.addEventListener('click', function() {
+  modalWindow.style.display = "none";
+  modalUnderlay.style.display = "none";
+});
+//console.log(buyButton);

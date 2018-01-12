@@ -33,7 +33,6 @@ var specialCheckbox = document.querySelector('.js-filters-special  input[type="c
 var pricesInputs = document.querySelectorAll('.js-filters-price  input[type="text"]');
 var dateInput = document.querySelector('.js-filters-date  input[type="date"]');
 var checkboxMetro = document.querySelectorAll('.js-filters-metro  input[type="checkbox"]');
-//console.log(catalogItems);
 
 for(i=0; i<checkboxTypes.length; i++) {
   checkboxTypes[i].addEventListener('change', function() {
@@ -69,7 +68,6 @@ pricesInputs.forEach(function(input) {
 
 dateInput.addEventListener('change', function() {
   filters.date = Date.parse(new Date(this.value));
-  //console.warn(filters.date);
   filterCatalog();
 });
 
@@ -125,7 +123,6 @@ function filterCatalog() {
     //date
     if (filters.date) {
       var currentDate = Date.parse(new Date(item.dataset.dateTo));
-      //console.log(currentDate);
       if (filters.date > currentDate) {
         shouldBeVisible *= 0;
       }
