@@ -86,10 +86,11 @@ buyButton.addEventListener('click', function(e) {
 });
 
 modalUnderlay.addEventListener('click', function() {
+  e.preventDefault();
   this.style.display = "none";
   modalWindow.style.display = "none";
 });
-modalClose.addEventListener('click', function() {
+modalClose.addEventListener('click', function(e) {
   modalWindow.style.display = "none";
   modalUnderlay.style.display = "none";
   modalSuccess.style.display = "none";

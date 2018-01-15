@@ -27,7 +27,7 @@ var filters = {
   date: null,
 };
 
-var catalogItems = document.querySelectorAll('.catalog__item');
+var catalogItems = catalogList.childNodes;
 var checkboxTypes = document.querySelectorAll('.js-filters-type  input[type="checkbox"]');
 var specialCheckbox = document.querySelector('.js-filters-special  input[type="checkbox"]');
 var pricesInputs = document.querySelectorAll('.js-filters-price  input[type="text"]');
@@ -68,6 +68,7 @@ pricesInputs.forEach(function(input) {
 
 dateInput.addEventListener('change', function() {
   filters.date = Date.parse(new Date(this.value));
+  //console.warn(filters.date);
   filterCatalog();
 });
 
@@ -123,6 +124,7 @@ function filterCatalog() {
     //date
     if (filters.date) {
       var currentDate = Date.parse(new Date(item.dataset.dateTo));
+      //console.log(currentDate);
       if (filters.date > currentDate) {
         shouldBeVisible *= 0;
       }
