@@ -74,7 +74,8 @@ function calculatePrice() {
 var buyButton = document.querySelector('.catalog_basket__summ .btn');
 var modalUnderlay = document.querySelector('.modal_underlay');
 var modalWindow = document.querySelector('.modal_order');
-var modalClose = document.querySelector('.modal__close');
+var modalSuccess = document.querySelector('.modal_success');
+var modalClose = modalWindow.querySelector('.modal__close');
 
 buyButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -88,9 +89,40 @@ modalUnderlay.addEventListener('click', function() {
   this.style.display = "none";
   modalWindow.style.display = "none";
 });
-
 modalClose.addEventListener('click', function() {
   modalWindow.style.display = "none";
   modalUnderlay.style.display = "none";
+  modalSuccess.style.display = "none";
 });
 //console.log(buyButton);
+var modalLines = modalWindow.querySelectorAll('.modal__line');
+var modalNameInput = modalLines[0].querySelector('.input');
+var modalPhoneInput = modalLines[1].querySelector('.input');
+var modalEmailInput = modalLines[2].querySelector('.input');
+var modalCheckboxes = modalWindow.querySelectorAll('.checkbox__input');
+var modalBuyButton = modalWindow.querySelector('.btn');
+var reName = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
+var rePhone = /([0-9-+\s])+/g;
+var reEmail = /^([a-zA-Z0-9@.]+|\d+)$/i;
+
+modalBuyButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  var modalLinesValid = 1;
+
+  if (!reName.test(modalNameInput.value) || modalNameInput.value == "" || !rePhone.test(modalPhoneInput.value) || modalPhoneInput.value == "" || !reEmail.test(modalEmailInput.value) || modalEmailInput.value == "") {
+    modalLinesValid = 0;
+  }
+
+  var checkedCounter = 0;
+
+  for (i=0; i<modalCheckboxes.length; i++) {
+    if (modalCheckboxes[i].checked) {
+      checkedCounter++;
+    }
+  }
+
+  //console.log(modalLinesValid, checkedCounter);
+  if (checkedCounter == 1 && modalLinesValid == 1) {
+    modalSuccess.style.display = "block";
+  }
+});
