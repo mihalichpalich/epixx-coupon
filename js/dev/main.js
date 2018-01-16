@@ -76,6 +76,7 @@ var modalUnderlay = document.querySelector('.modal_underlay');
 var modalWindow = document.querySelector('.modal_order');
 var modalSuccess = document.querySelector('.modal_success');
 var modalClose = modalWindow.querySelector('.modal__close');
+var modalLoader = document.querySelector('.loader');
 
 buyButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -93,7 +94,6 @@ modalUnderlay.addEventListener('click', function() {
 modalClose.addEventListener('click', function(e) {
   modalWindow.style.display = "none";
   modalUnderlay.style.display = "none";
-  modalSuccess.style.display = "none";
 });
 //console.log(buyButton);
 var modalLines = modalWindow.querySelectorAll('.modal__line');
@@ -124,6 +124,17 @@ modalBuyButton.addEventListener('click', function(e) {
 
   //console.log(modalLinesValid, checkedCounter);
   if (checkedCounter == 1 && modalLinesValid == 1) {
-    modalSuccess.style.display = "block";
+    modalWindow.style.display = "none";
+    modalUnderlay.style.display = "none";
+    //modalSuccess.style.display = "block";
+    modalLoader.style.position = "fixed";
+    modalLoad(modalLoader, "block");
+    setTimeout(modalLoad, 1000, modalLoader, "none");
+    setTimeout(modalLoad, 1000, modalSuccess, "block");
+    setTimeout(modalLoad, 1500, modalSuccess, "none");
   }
 });
+
+function modalLoad(modalElem, displayValue) {
+  modalElem.style.display = displayValue;
+}
