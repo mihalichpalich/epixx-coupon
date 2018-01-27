@@ -10,7 +10,7 @@ function getJSON (url, cb) {
 
 var cartsDataArray = [];
 
-getJSON('js/dev/data.json', function(arr) {
+getJSON('js/dist/data.json', function(arr) {
   cartsDataArray = arr;
   createItems(cartsDataArray);
 });

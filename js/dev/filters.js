@@ -1,7 +1,7 @@
 //filter
 var filterTitles = document.querySelectorAll('.filter__title');
 
-for(i=0; i<filterTitles.length; i++) {
+for(var i=0; i<filterTitles.length; i++) {
   filterTitles[i].addEventListener('click', function() {
     togglefilterTitles(this.parentNode);
   });

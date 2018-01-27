@@ -1,24 +1,45 @@
 //catalog
-var catalogViewToogle = document.querySelectorAll(".catalog_view__item");
+class TogglerView {
+  constructor() {
+    this._initialStates = ["three", "two"];
+    this._buttons = document.querySelectorAll(".catalog_view__item");
+    this._catalogList = document.querySelector('.catalog__list');
+    this._catalogListSelector = "catalog__list";
+    this._buttonsSelectorActive = "catalog_view__item--active";
+  }
 
-for (var i=0; i<catalogViewToogle.length; i++) {
-  catalogViewToogle[i].addEventListener('click', function(e) {
-    var elem = e.currentTarget;
-
-    if(!elem.classList.contains('catalog_view__item--active')) {
-      document.querySelector(".catalog_view__item--active").classList.remove('catalog_view__item--active');
-      elem.classList.add('catalog_view__item--active');
-    }
-
-    if (catalogViewToogle[0].classList.contains('catalog_view__item--active')) {
-      catalogList.classList.remove('catalog__list--three');
-      catalogList.classList.add('catalog__list--two');
+  toogle() {
+    if (this._buttons[0].classList.contains(this._buttonsSelectorActive)) {
+      this._catalogList.classList.remove(`${this._catalogListSelector}--${this._initialStates[0]}`);
+      this._catalogList.classList.add(`${this._catalogListSelector}--${this._initialStates[1]}`);
     } else {
-      catalogList.classList.remove('catalog__list--two');
-      catalogList.classList.add('catalog__list--three');
+      this._catalogList.classList.remove(`${this._catalogListSelector}--${this._initialStates[1]}`);
+      this._catalogList.classList.add(`${this._catalogListSelector}--${this._initialStates[0]}`);
     }
-  });
+  }
+
+  activeClassChange(element) {
+    if(!element.classList.contains(this._buttonsSelectorActive)) {
+      document.querySelector(`.${this._buttonsSelectorActive}`).classList.remove(this._buttonsSelectorActive);
+      element.classList.add(this._buttonsSelectorActive);
+    }
+
+    this.toogle();
+  }
+
+  init() {
+    for (let i=0; i<this._buttons.length; i++) {
+      this._buttons[i].addEventListener('click', evt => {
+        var elem = evt.currentTarget;
+
+        this.activeClassChange(elem);
+      });
+    };
+  }
 }
+
+let toggler = new TogglerView();
+toggler.init();
 
 //basket
 var arrayCart = [];
@@ -26,7 +47,7 @@ var btnsToCard = document.querySelectorAll('.catalog_cart__btn  .btn');
 var list = document.querySelector('.catalog_basket__list');
 var finalPrice = document.querySelector('.catalog_basket__summ_text');
 
-for(i = 0; i < btnsToCard.length; i++) {
+for(var i = 0; i < btnsToCard.length; i++) {
   btnsToCard[i].addEventListener('click', addToCard);
 }
 
@@ -138,3 +159,4 @@ modalBuyButton.addEventListener('click', function(e) {
 function modalLoad(modalElem, displayValue) {
   modalElem.style.display = displayValue;
 }
+
